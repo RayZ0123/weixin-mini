@@ -1,0 +1,254 @@
+<!--创建活动页面-->
+<view class='page page-content'>
+  <view class='page-warp'>
+    
+    <view class='activity-module-cont'>
+      <swiper class='activity-module-warp' autoplay>
+          <block wx:for="{{activityModule.images}}"  class='activity-module-item' wx:key="{{item.id}}">
+            <swiper-item>
+              <image
+                src="{{item.imgurl}}"
+                mode="scaleToFill"
+                class="activity-module-cover" />
+            </swiper-item>
+          </block>
+        </swiper>
+      <view class='change-module-btn' bindtap='bindChangeModule'>更换模板</view>
+    </view>
+    
+    <view class='activity-form-cont'>
+
+      <form bindsubmit="formSubmit" bindreset="formReset">
+
+      <view class='fomr-group'>
+
+        <label class="form-item">
+          <input
+            type="text"
+            placeholder="告诉我活动的标题是什么"
+            class='form-input activity-form-input'
+          />
+        </label>
+
+        <label class="form-item">
+          <view class='form-item-label'>
+            <image
+              class='form-item-label-icon'
+              mode="aspectFit"
+              src="/images/icons/time.png"></image>
+            <text class='form-item-label-text'>开始时间</text>
+          </view>
+          
+          <view class='form-item-content'>
+            <picker
+              mode="date"
+              value="{{formData.beginDay}}"
+              bindchange="bindChangeBeginDay"
+              class='activity-picker-item'
+            >
+              <view class="picker-item-label">
+              {{formData.beginDay}}
+              </view>
+            </picker>
+            <view class='packer-item-split'></view>
+            <picker
+              mode="time"
+              value="{{formData.beginTime}}"
+              bindchange="bindChangeBeginTime"
+              class='activity-picker-item'
+            >
+              <view class="picker-item-label">
+              {{formData.beginTime}}
+              </view>
+            </picker>
+          </view>
+        </label>
+
+        <label class="form-item">
+          <view class='form-item-label'>
+            <image
+              class='form-item-label-icon'
+              mode="aspectFit"
+              src="/images/icons/time.png"></image>
+            <text class='form-item-label-text'>结束时间</text>
+          </view>
+          
+          <view class='form-item-content'>
+            <picker
+              mode="date"
+              value="{{formData.endDay}}"
+              bindchange="bindChangeEndDay"
+              class='activity-picker-item'
+            >
+              <view class="picker-item-label">
+              {{formData.endDay}}
+              </view>
+            </picker>
+            <view class='packer-item-split'></view>
+            <picker
+              mode="time"
+              value="{{formData.endTime}}"
+              bindchange="bindChangeEndTime"
+              class='activity-picker-item'
+            >
+              <view class="picker-item-label">
+              {{formData.endTime}}
+              </view>
+            </picker>
+          </view>
+        </label>
+        
+      </view>
+
+      <view class='fomr-group'>
+
+        <label class="form-item">
+          <view class='form-item-label'>
+            <image
+              class='form-item-label-icon'
+              mode="aspectFit"
+              src="/images/icons/place.png"></image>
+            <text class='form-item-label-text'>地点</text>
+          </view>
+          
+          <view class='form-item-content'>
+            <input
+              type="text"
+              value='{{formData.address.name}}'
+              placeholder='请选择活动的地址'
+              class='activity-place-input'
+              disabled
+              bindtap='bindChangeMapPlace'
+            />
+          </view>
+        </label>
+
+        <label class="form-item" bindtap='bindChangeMoreFieldVisible'>
+          <view class='form-item-label'>
+            <text class='form-item-label-text'>更多选项</text>
+          </view>
+          
+          <view class='form-item-content'>
+            <image wx:if="{{!moreFieldVisible}}"
+              class='more-btn-icon'
+              mode="aspectFit"
+              src="/images/icons/arrow-right.png"></image>
+            <image wx:if="{{moreFieldVisible}}"
+              class='more-btn-icon'
+              mode="aspectFit"
+              src="/images/icons/arrow-down.png"></image>
+          </view>
+        </label>
+
+        <label class="form-item" wx:if="{{moreFieldVisible}}">
+          <view class='form-item-label'>
+            <text class='form-item-label-text'>人数上限</text>
+          </view>
+          <view class='form-item-content'>
+            <input
+              type="number"
+              placeholder="活动最大参与人数,不填表示无限制"
+              class='form-input activity-form-input'
+            />
+          </view>
+        </label>
+
+        <label class="form-item" wx:if="{{moreFieldVisible}}">
+          <view class='form-item-label'>
+            <text class='form-item-label-text'>人数下限</text>
+          </view>
+          <view class='form-item-content'>
+            <input
+              type="number"
+              placeholder="活动最小参与人数,不填表示无限制"
+              class='form-input activity-form-input'
+            />
+          </view>
+        </label>
+
+        <label class="form-item" wx:if="{{moreFieldVisible}}">
+          <view class='form-item-label'>
+            <text class='form-item-label-text'>最大排队人数</text>
+          </view>
+          <view class='form-item-content'>
+            <input
+              type="number"
+              placeholder="活动最大排队人数,不填表示无限制"
+              class='form-input activity-form-input'
+            />
+          </view>
+        </label>
+
+        <label class="form-item" wx:if="{{moreFieldVisible}}">
+          <view class='form-item-content'>
+            <text class='form-item-label-text content-label'>报名是否需要审核</text>
+            <switch class='form-item-switch' type='checkbox' checked />
+          </view>
+        </label>
+
+        <label class="form-item" bindtap='bindChangeUserFieldVisible' wx:if="{{moreFieldVisible}}">
+          
+          <view class='form-item-content'>
+            <text class='form-item-label-text content-label'>报名表单信息</text>
+            <image wx:if="{{!userFieldVisible}}"
+              class='more-btn-icon'
+              mode="aspectFit"
+              src="/images/icons/arrow-right.png"></image>
+            <image wx:if="{{userFieldVisible}}"
+              class='more-btn-icon'
+              mode="aspectFit"
+              src="/images/icons/arrow-down.png"></image>
+          </view>
+        </label>
+
+        <label class="form-item" wx:if="{{moreFieldVisible && userFieldVisible}}">
+          <view class='form-item-content'>
+            <text class='form-item-label-text content-label'>手机号是否显示</text>
+            <radio-group class="form-radio-group">
+              <label class="form-radio-item-label">不显示<radio class="form-radio-item" value="{{0}}" /></label>
+              <label class="form-radio-item-label">显示但不必填<radio class="form-radio-item" value="{{1}}" /></label>
+              <label class="form-radio-item-label">显示且必填<radio class="form-radio-item" value="{{2}}" /></label>
+            </radio-group>
+          </view>
+        </label>
+
+        <label class="form-item" wx:if="{{moreFieldVisible && userFieldVisible}}">
+          <view class='form-item-content'>
+            <text class='form-item-label-text content-label'>微信号是否显示</text>
+            <radio-group class="form-radio-group">
+              <label class="form-radio-item-label">不显示<radio class="form-radio-item" value="{{0}}" /></label>
+              <label class="form-radio-item-label">显示但不必填<radio class="form-radio-item" value="{{1}}" /></label>
+              <label class="form-radio-item-label">显示且必填<radio class="form-radio-item" value="{{2}}" /></label>
+            </radio-group>
+          </view>
+        </label>
+
+        <label class="form-item" wx:if="{{moreFieldVisible && userFieldVisible}}">
+          <view class='form-item-content'>
+            <text class='form-item-label-text content-label'>QQ号是否显示</text>
+            <radio-group class="form-radio-group">
+              <label class="form-radio-item-label">不显示<radio class="form-radio-item" value="{{0}}" /></label>
+              <label class="form-radio-item-label">显示但不必填<radio class="form-radio-item" value="{{1}}" /></label>
+              <label class="form-radio-item-label">显示且必填<radio class="form-radio-item" value="{{2}}" /></label>
+            </radio-group>
+          </view>
+        </label>
+        
+      </view>
+      
+      <view class='form-submit-btn-cont'>
+        <button
+          type="default"
+          class='form-submit-btn'
+          loading="{{loading}}"
+          bindtap="default"
+          hover-class="form-submit-btn-hover"
+        >
+          提交
+        </button>
+      </view>
+
+      </form>
+    </view>
+  </view>
+</view>

@@ -1,0 +1,51 @@
+/* miniprogram/pages/module-form/moduleForm.wxss */
+
+.page-warp {
+  width: 100%;
+}
+.image-cont {
+  text-align: center;
+  width: 100%;
+}
+
+.activity-module-cover {
+  display: inline-block;
+  width: 100%;
+  height: 10rem;
+}
+
+.module-image-list-item {
+  width: 100%;
+}
+
+.activity-module-image {
+  width: 100%;
+  
+}
+
+.module-form-warp {
+  padding: 0 1rem 0.5rem 1rem;
+}
+
+.image-cont {
+  display: inline-block;
+}
+
+.image-warp {
+  border-radius: 0.2rem;
+}
+
+.block-title {
+  padding: 0.4rem 0 0.2rem 0;
+}
+
+.module-toolbar-cont {
+  text-align: right;
+  padding-top: 0.5rem;
+  padding-right: 1rem;
+}
+
+.toolbar-btn {
+  display: inline-block;
+  margin-left: 0.5rem;
+}

@@ -1,0 +1,6 @@
+<!--miniprogram/pages/mainLayout/mainLayout.wxml-->
+<view class='page page-content'>
+  <view class='page-warp'>
+    我的活动列表
+  </view>
+</view>

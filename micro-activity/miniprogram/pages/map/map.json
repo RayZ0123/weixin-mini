@@ -1,0 +1,5 @@
+{
+  "usingComponents": {
+    "we-searchbar": "/components/weui/searchbar/searchbar"
+  }
+}

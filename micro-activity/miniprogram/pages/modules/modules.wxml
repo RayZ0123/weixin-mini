@@ -1,0 +1,28 @@
+<!--活动模板列表-->
+<view class='page page-content'>
+  <view class='page-warp'>
+
+    <view class='module-type-cont' wx:for='{{moduleTypeList}}' wx:key="{{item.id}}">
+      <view class='module-type-content'>
+        <view class='module-type-title'>{{item.title}}</view>
+        <view class='module-list-cont'>
+          <view class='module-list-item'
+            wx:for='{{item.children}}'
+            wx:for-index="mindex"
+            wx:for-item="mitem"
+            wx:key="{{mitem.id}}"
+          >
+            <view class='module-item-cont'>
+              <image
+                src="{{mitem.cover}}"
+                mode="scaleToFill"
+                class="activity-module-cover" />
+              <view class='module-title'>{{mitem.title}}</view>
+            </view>
+          </view>
+        </view>
+      </view>
+    </view>
+
+  </view>
+</view>

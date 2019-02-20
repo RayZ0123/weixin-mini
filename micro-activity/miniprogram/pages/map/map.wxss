@@ -1,0 +1,68 @@
+/* miniprogram/pages/map/map.wxss */
+.page-warp {
+  width: 100%;
+  height: 100vh;
+}
+
+.search-container {
+  width: 100%;
+  height: 3rem;
+}
+
+.map-warp {
+  height: calc(100% - 3rem);
+}
+
+.map-warp-map {
+  width: 100%;
+  height: 100%;
+}
+
+.suggestion-show-cont {
+  position: absolute;
+  top: 3rem;
+  left: 0;
+  z-index: 99;
+  width: 100%;
+  background-color: #FFFFFF;
+}
+
+.suggestion-show-item {
+  border-bottom: 1px solid #F1F1F1;
+}
+
+.confirm-btn-cont {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  line-height: 1;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.confirm-btn {
+  display: inline-block;
+  width: 70%;
+  height: 100%;
+  font-size: 1rem;
+  text-align: center;
+  padding: 0.5rem 0;
+  line-height: 1;
+  color: #FFFFFF;
+  background-color: #FF7F24;
+  border-radius: 0.4rem;
+}
+
+.confirm-btn-disabled {
+  display: inline-block;
+  width: 70%;
+  height: 100%;
+  font-size: 1rem;
+  text-align: center;
+  padding: 0.5rem 0;
+  line-height: 1;
+  color: #FFFFFF;
+  background-color: #999999;
+  border-radius: 0.4rem;
+}

@@ -1,0 +1,62 @@
+<!--活动模板表单-->
+<view class='page page-content'>
+  <view class='page-warp'>
+
+    <view class='module-toolbar-cont' wx:if="{{canEdit}}">
+      <button
+        type="primary"
+        size="mini"
+        bindtap="bindSubmitModule"
+        class='toolbar-btn'
+      >
+        确定
+      </button>
+
+      <button
+        type="default"
+        size="mini"
+        bindtap="bindSubmitModule"
+        class='toolbar-btn'
+      >
+        编辑
+      </button>
+
+      <button
+        type="warn"
+        size="mini"
+        bindtap="bindSubmitModule"
+        class='toolbar-btn'
+      >
+        删除
+      </button>
+
+      <button
+        type="default"
+        size="mini"
+        bindtap="bindSubmitModule"
+        class='toolbar-btn'
+      >
+        上架
+      </button>
+    </view>
+
+    <view class='module-form-warp'>
+      <view class='block-title'>封面</view>
+        <view class='image-cont'>
+          <image
+              src="{{cover}}"
+              mode="scaleToFill"
+              class="activity-module-cover image-warp" />
+        </view>
+
+        <view class='block-title'>详情</view>
+        <view class='module-image-list-item' wx:for='{{images}}'>
+          <image
+              src="{{item.imgurl}}"
+              mode="widthFix"
+              class="activity-module-image image-warp" />
+        </view>
+    </view>
+
+  </view>
+</view>

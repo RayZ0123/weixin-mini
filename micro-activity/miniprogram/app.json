@@ -1,0 +1,51 @@
+{
+  "pages": [
+    "pages/form/form",
+    "pages/module-form/moduleForm",
+    "pages/modules/modules",
+    "pages/map/map",
+    "pages/all-list/allList",
+    "pages/my-list/myList"
+  ],
+  "window": {
+    "backgroundColor": "#F6F6F6",
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#F6F6F6",
+    "navigationBarTitleText": "微活动-嗨呀",
+    "navigationBarTextStyle": "black"
+  },
+  "tabBar": {
+    "custom": true,
+    "color": "#7A7E83",
+    "selectedColor": "#3cc51f",
+    "borderStyle": "black",
+    "backgroundColor": "#ffffff",
+    "list": [
+      {
+        "pagePath": "pages/all-list/allList",
+        "iconPath": "/images/tabbar/main.png",
+        "selectedIconPath": "/images/tabbar/main-select.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/my-list/myList",
+        "iconPath": "/images/tabbar/list.png",
+        "selectedIconPath": "/images/tabbar/list-select.png",
+        "text": "列表"
+      }
+    ]
+  },
+  "usingComponents": {
+    "custom-tab-bar": "/custom-tab-bar/index"
+  },
+  "networkTimeout": {
+    "request": 30000,
+    "downloadFile": 30000
+  },
+  "permission": {
+    "scope.userLocation": {
+      "desc": "您的位置信息将用于更好地为您匹配活动"
+    }
+  },
+  "debug": true
+}
